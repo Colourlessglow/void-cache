@@ -4,6 +4,8 @@
 
 一个为了统一开发中各种key-value储存方案API的小工具
 
+🇨🇳国内用户可访问[国内镜像](https://gitee.com/white-kite/void-cache)
+
 ## 同步版
 
 ### Demo
