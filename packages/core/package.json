@@ -1,0 +1,26 @@
+{
+  "name": "void-cache",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsup-node"
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "whitekite",
+    "email": "xuxjigsaw@qq.com"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
