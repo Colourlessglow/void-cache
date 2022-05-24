@@ -2,6 +2,7 @@
   "name": "void-cache",
   "version": "0.0.1",
   "description": "一个为了统一开发中各种key-value储存方案API的小工具",
+  "repository": "Colourlessglow/void-cache",
   "scripts": {
     "build": "tsup-node"
   },
@@ -23,5 +24,8 @@
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
