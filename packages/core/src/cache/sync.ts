@@ -1,6 +1,7 @@
 import { Driver } from '../driver'
+import { CacheModel } from './types'
 
-export const createCacheModel = <T = any>(driver: Driver<T>) => {
+export const createCacheModel = <T = any>(driver: Driver<T>): CacheModel<T> => {
   const support = driver.support ? driver.support() : true
 
   function get(key: string) {

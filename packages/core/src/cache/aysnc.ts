@@ -1,6 +1,9 @@
 import { AsyncDriver } from '../driver'
+import { AsyncCacheModel } from './types'
 
-export const createAsyncCacheModel = <T = Promise<any>>(driver: AsyncDriver<T>) => {
+export const createAsyncCacheModel = <T = Promise<any>>(
+  driver: AsyncDriver<T>
+): AsyncCacheModel<T> => {
   const support = driver.support ? driver.support() : true
 
   function get(key: string) {
