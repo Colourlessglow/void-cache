@@ -1,6 +1,6 @@
 {
   "name": "void-cache",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "一个为了统一开发中各种key-value储存方案API的小工具",
   "repository": "Colourlessglow/void-cache",
   "scripts": {
