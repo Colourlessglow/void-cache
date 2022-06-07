@@ -4,25 +4,25 @@ import { CacheModel } from './types'
 export const createCacheModel = <T = any>(driver: Driver<T>): CacheModel<T> => {
   const support = driver.support ? driver.support() : true
 
-  function get(key: string) {
+  function get<R = T>(key: string): R {
     if (!support) {
       throw new Error('get is not support')
     }
-    return driver.get(key)
+    return driver.get(key) as any
   }
 
-  function set(key: string, value: T) {
+  function set<R = T>(key: string, value: R) {
     if (!support) {
       throw new Error('delete is not support')
     }
     return driver.set(key, value)
   }
 
-  function _delete(key: string) {
-    if (!support || !driver.delete) {
+  function remove(key: string) {
+    if (!support || !driver.remove) {
       throw new Error('delete is not support')
     }
-    return driver.delete(key)
+    return driver.remove(key)
   }
 
   function has(key: string) {
@@ -50,9 +50,9 @@ export const createCacheModel = <T = any>(driver: Driver<T>): CacheModel<T> => {
     if (driver.clear) {
       return driver.clear()
     }
-    if (driver.delete && driver.keys) {
+    if (driver.remove && driver.keys) {
       driver.keys().forEach((key) => {
-        driver.delete!(key)
+        driver.remove!(key)
       })
       return
     }
@@ -62,7 +62,7 @@ export const createCacheModel = <T = any>(driver: Driver<T>): CacheModel<T> => {
   return {
     get,
     set,
-    delete: _delete,
+    remove,
     has,
     keys,
     size,

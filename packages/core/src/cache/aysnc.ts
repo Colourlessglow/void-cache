@@ -6,25 +6,25 @@ export const createAsyncCacheModel = <T = Promise<any>>(
 ): AsyncCacheModel<T> => {
   const support = driver.support ? driver.support() : true
 
-  function get(key: string) {
+  function get<R = T>(key: string): Promise<R> {
     if (!support) {
       return Promise.reject('get is not support')
     }
-    return driver.get(key)
+    return driver.get(key) as any
   }
 
-  function set(key: string, value: T) {
+  function set<R = T>(key: string, value: R) {
     if (!support) {
       return Promise.reject('delete is not support')
     }
     return driver.set(key, value)
   }
 
-  function _delete(key: string) {
-    if (!support || !driver.delete) {
+  function remove(key: string) {
+    if (!support || !driver.remove) {
       return Promise.reject('delete is not support')
     }
-    return driver.delete(key)
+    return driver.remove(key)
   }
 
   function has(key: string) {
@@ -52,8 +52,8 @@ export const createAsyncCacheModel = <T = Promise<any>>(
     if (driver.clear) {
       return driver.clear()
     }
-    if (driver.delete && driver.keys) {
-      return driver.keys().then((k) => Promise.all(k.map((key) => driver.delete!(key))))
+    if (driver.remove && driver.keys) {
+      return driver.keys().then((k) => Promise.all(k.map((key) => driver.remove!(key))))
     }
     return Promise.reject('clear is not support')
   }
@@ -61,7 +61,7 @@ export const createAsyncCacheModel = <T = Promise<any>>(
   return {
     get,
     set,
-    delete: _delete,
+    remove,
     has,
     keys,
     size,

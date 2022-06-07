@@ -1,8 +1,8 @@
 {
-  "name": "@void-cache/core",
+  "name": "@void-cache/indexdb",
   "version": "0.1.0",
-  "description": "一个为了统一开发中各种key-value储存方案API的小工具",
   "repository": "Colourlessglow/void-cache",
+  "description": "void-cache 的 indexDB实现",
   "scripts": {
     "build": "unbuild"
   },
@@ -27,5 +27,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "@void-cache/core": "workspace:*",
+    "idb-keyval": "^6.1.0"
   }
 }
