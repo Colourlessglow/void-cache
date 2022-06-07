@@ -1,6 +1,6 @@
 {
   "name": "@void-cache/memory",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "Colourlessglow/void-cache",
   "description": "void-cache 的 内存缓存实现",
   "scripts": {
