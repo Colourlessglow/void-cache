@@ -27,7 +27,7 @@ localStorageCache.get('foo')
 localStorageCache.set('foo','bar')
 localStorageCache.has('foo')
 localStorageCache.clear()
-localStorageCache.delete('foo')
+localStorageCache.remove('foo')
 ```
 
 ## 异步版
@@ -53,6 +53,6 @@ await localStorageCache.get('foo')
 await localStorageCache.set('foo','bar')
 await localStorageCache.has('foo')
 await localStorageCache.clear()
-await localStorageCache.delete('foo')
+await localStorageCache.remove('foo')
 ```
 

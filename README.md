@@ -4,11 +4,10 @@
 
 一个为了统一开发中各种key-value储存方案API的小工具
 
-🇨🇳国内用户可访问[国内镜像](https://gitee.com/white-kite/void-cache)
-
 ## 同步版
 
 ### Demo
+
 ```ts
 import {defineDriver} from 'void-cache'
 
@@ -26,15 +25,16 @@ export const storageLikeDriver = defineDriver<Storage>(
 export const localStorageCache = createCacheModel(storageLikeDriver(localStorage))
 
 localStorageCache.get('foo')
-localStorageCache.set('foo','bar')
+localStorageCache.set('foo', 'bar')
 localStorageCache.has('foo')
 localStorageCache.clear()
-localStorageCache.delete('foo')
+localStorageCache.remove('foo')
 ```
 
 ## 异步版
 
 ### Demo
+
 ```ts
 import {defineAsyncDriver} from 'void-cache'
 
@@ -52,9 +52,15 @@ export const storageLikeDriver = defineAsyncDriver<Storage>(
 export const localStorageCache = createAsyncCacheModel(storageLikeDriver(localStorage))
 
 await localStorageCache.get('foo')
-await localStorageCache.set('foo','bar')
+await localStorageCache.set('foo', 'bar')
 await localStorageCache.has('foo')
 await localStorageCache.clear()
-await localStorageCache.delete('foo')
+await localStorageCache.remove('foo')
 ```
 
+## 预设
+
+- @void-cache/indexdb indexDB
+- @void-cache/memory 内存
+- @void-cache/storage-like 与localstorage API 数据结构相同
+- @void-cache/web-storage localStorage + sessionStorage
